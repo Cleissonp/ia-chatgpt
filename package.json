@@ -1,0 +1,11 @@
+{
+  "name": "ia-chatgpt",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Laboratório didático estático para demonstrações de IA generativa e programação.",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check js/app.js && node --check js/accessibility.js && node --check data/scenarios.js && npm test"
+  }
+}
