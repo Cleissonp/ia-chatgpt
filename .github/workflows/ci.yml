@@ -1,12 +1,15 @@
 name: CI
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   validate:
     name: Validate static application
@@ -18,15 +21,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Check JavaScript syntax and run tests
+      - name: Check JavaScript syntax and run all tests
         run: npm run check
-      - name: Verify required files
+      - name: Verify required application and deployment files
         run: |
           test -f index.html
           test -f SPEC.md
           test -f AGENTS.md
+          test -f README.md
+          test -f .nojekyll
           test -f css/styles.css
           test -f css/presentation.css
           test -f js/app.js
           test -f js/accessibility.js
           test -f data/scenarios.js
+          test -f tests/scenarios.test.mjs
+          test -f tests/static.test.mjs
+          test -f .github/workflows/pages.yml
